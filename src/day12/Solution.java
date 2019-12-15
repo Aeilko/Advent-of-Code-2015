@@ -22,7 +22,7 @@ public class Solution {
 
 		JSONArray json = new JSONArray(INPUT);
 		result = getSum(json);
-		
+
 		System.out.println("Part 2 - Success");
 		System.out.println("Answer\t" + result);
 	}
