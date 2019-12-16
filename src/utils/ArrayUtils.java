@@ -15,6 +15,16 @@ public class ArrayUtils {
 		return result;
 	}
 
+	public static int[] add(int[] a, int[] b){
+		int[] result = new int[a.length];
+
+		for(int i = 0; i < a.length; i++){
+			result[i] = a[i]+b[i];
+		}
+
+		return result;
+	}
+
 	public static void display(Object[] a){
 		for(int i = 0; i < a.length; i++){
 			System.out.println(a[i].toString());
