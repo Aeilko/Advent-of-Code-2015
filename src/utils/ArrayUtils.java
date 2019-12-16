@@ -25,6 +25,16 @@ public class ArrayUtils {
 		return result;
 	}
 
+	public static int sum(int[] a){
+		int result = 0;
+
+		for(int i: a){
+			result += i;
+		}
+
+		return result;
+	}
+
 	public static void display(Object[] a){
 		for(int i = 0; i < a.length; i++){
 			System.out.println(a[i].toString());
