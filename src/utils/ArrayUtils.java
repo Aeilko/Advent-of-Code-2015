@@ -15,6 +15,18 @@ public class ArrayUtils {
 		return result;
 	}
 
+	public static String arrayToString(String[] in, int start, int end){
+		String result = "";
+		for(int i = start; i <= end; i++){
+			result += in[i];
+		}
+		return result;
+	}
+
+	public static String arrayToString(String[] in){
+		return arrayToString(in, 0, in.length-1);
+	}
+
 	public static int[] add(int[] a, int[] b){
 		int[] result = new int[a.length];
 
