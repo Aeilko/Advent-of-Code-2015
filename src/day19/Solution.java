@@ -3,10 +3,7 @@ package day19;
 import utils.ArrayUtils;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,6 +43,7 @@ public class Solution {
 			reversedRules.put(sa[1], sa[0]);
 		}
 
+		// Part 1
 		TreeSet<String> result = new TreeSet<>();
 		for(int i = 0; i < input.length; i++){
 			if(rules.containsKey(input[i])){
@@ -58,24 +56,31 @@ public class Solution {
 
 		System.out.println("Part 1 - Success");
 		System.out.println("Answer\t" + result.size() + "\n");
-	}
 
-	// Dont replace all, find all possibilities each time replacing just one, and than calling the update again.
-	public String replaceAll(String in, Map<String, String> replaces){
-		StringBuilder sb = new StringBuilder();
-
-		outer: for(int i = 0; i < in.length(); i++){
-			for(String k: replaces.keySet()){
-				if(in.startsWith(k, i)){
-					sb.append(replaces.get(k));
-					i += replaces.get(k).length()-1;
-					continue outer;
-				}
-			}
-			// Only reached if this is not part of a key, so just leave it
-			sb.append(in.charAt(i));
+		// Part 2
+		String cur = INPUT;
+		Set<String> keys = reversedRules.keySet();
+		int result2 = 0;
+		while(!cur.equals("e")){
+			// Constantly apply the longest rule, and hope that's enough to get the answer
+			String r = findLongestRule(cur, keys);
+			cur = cur.replaceFirst(r, reversedRules.get(r));
+			result2++;
 		}
 
-		return sb.toString();
+		System.out.println("Part 2 - Success");
+		System.out.println("Answer\t" + result2 + "\n");
+	}
+
+	public static String findLongestRule(String line, Set<String> rules) {
+		String longest = "";
+		int longestLength = 0;
+		for (String r: rules) {
+			if (r.length() > longestLength && line.contains(r)){
+				longest = r;
+				longestLength = longest.length();
+			}
+		}
+		return longest;
 	}
 }
