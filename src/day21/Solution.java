@@ -9,8 +9,6 @@ public class Solution {
     public static final int[] ARMORCOST = {0,13,31,53,75,102};
 
     public static final int[] RINGCOST = {0,25,50,100,20,40,80};
-    public static final int RINGDAMAGE = 25;
-    public static final int RINGARMOR = 20;
 
     public static final int BOSSHEALTH = 100;
     public static final int BOSSARMOR = 2;
